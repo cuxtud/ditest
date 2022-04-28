@@ -12,11 +12,19 @@ def orderCatalog(gid):
     url = 'https://%s/api/catalog/orders' % (MORPHEUS_HOST)
     response = requests.post(url, headers=MORPHEUS_HEADERS, body=body, verify=MORPHEUS_VERIFY_SSL_CERT)
     data = response.json()
+    print("")
+    print("payload for catalog order post response")
+    print("------------------------------------------")
+    print(json.dumps(data, indent=4))
 
 def getGroupId():
     url = 'https://%s/api/groups?phrase=all' % (MORPHEUS_HOST)
     response = requests.get(url, headers=MORPHEUS_HEADERS), verify=MORPHEUS_VERIFY_SSL_CERT
     data = response.json()
+    print("------------------------------------------")
+    print("payload for group get")
+    print("------------------------------------------")
+    print(json.dumps(data, indent=4))
     gid = data['groups'][0]['id']
     return gid
 
