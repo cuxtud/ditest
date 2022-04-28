@@ -19,7 +19,7 @@ def orderCatalog(gid):
 
 def getGroupId():
     url = 'https://%s/api/groups?phrase=all' % (MORPHEUS_HOST)
-    response = requests.get(url, headers=MORPHEUS_HEADERS), verify=MORPHEUS_VERIFY_SSL_CERT
+    response = requests.get(url, headers=MORPHEUS_HEADERS, verify=MORPHEUS_VERIFY_SSL_CERT)
     data = response.json()
     print("------------------------------------------")
     print("payload for group get")
