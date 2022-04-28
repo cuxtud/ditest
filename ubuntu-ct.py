@@ -8,6 +8,7 @@ MORPHEUS_HEADERS = {"Content-Type":"application/json","Accept":"application/json
 
 def orderCatalog(gid):
     jbody = {"order": {"items": [{"type": {"name": "Ubuntu 20.04"},"config": {"groups": gid,"clouds": 1}}]}}
+    print(json.dumps(jbody, indent=4))
     body = json.dumps(jbody)
     url = 'https://%s/api/catalog/orders' % (MORPHEUS_HOST)
     response = requests.post(url, headers=MORPHEUS_HEADERS, body=body, verify=MORPHEUS_VERIFY_SSL_CERT)
@@ -21,10 +22,10 @@ def getGroupId():
     url = 'https://%s/api/groups?phrase=all' % (MORPHEUS_HOST)
     response = requests.get(url, headers=MORPHEUS_HEADERS, verify=MORPHEUS_VERIFY_SSL_CERT)
     data = response.json()
-    print("------------------------------------------")
-    print("payload for group get")
-    print("------------------------------------------")
-    print(json.dumps(data, indent=4))
+    # print("------------------------------------------")
+    # print("payload for group get")
+    # print("------------------------------------------")
+    # print(json.dumps(data, indent=4))
     gid = data['groups'][0]['id']
     return gid
 
