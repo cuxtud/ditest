@@ -20,7 +20,7 @@ def executeWorkflow(wid):
     jbody = {"job": {}}
     print(json.dumps(jbody, indent=4))
     body = json.dumps(jbody)
-    url = 'https://%s/api/catalog/orders' % (MORPHEUS_HOST)
+    url = 'https://%s/api/task-sets/%s/execute' % (MORPHEUS_HOST, wid)
     response = requests.post(url, headers = MORPHEUS_HEADERS, data = body, verify = MORPHEUS_VERIFY_SSL_CERT)
     if not response.ok:
         print("Error: Unable to execute workflow with id '%s' : Response code %s: %s" % (wid, response.status_code, response.text))
