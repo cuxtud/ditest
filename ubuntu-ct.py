@@ -11,7 +11,7 @@ def orderCatalog(gid):
     print(json.dumps(jbody, indent=4))
     body = json.dumps(jbody)
     url = 'https://%s/api/catalog/orders' % (MORPHEUS_HOST)
-    response = requests.post(url, headers=MORPHEUS_HEADERS, body=body, verify=MORPHEUS_VERIFY_SSL_CERT)
+    response = requests.post(url, headers = MORPHEUS_HEADERS, data = body, verify = MORPHEUS_VERIFY_SSL_CERT)
     data = response.json()
     print("")
     print("payload for catalog order post response")
@@ -20,7 +20,7 @@ def orderCatalog(gid):
 
 def getGroupId():
     url = 'https://%s/api/groups?phrase=all' % (MORPHEUS_HOST)
-    response = requests.get(url, headers=MORPHEUS_HEADERS, verify=MORPHEUS_VERIFY_SSL_CERT)
+    response = requests.get(url, headers = MORPHEUS_HEADERS, verify = MORPHEUS_VERIFY_SSL_CERT)
     data = response.json()
     # print("------------------------------------------")
     # print("payload for group get")
