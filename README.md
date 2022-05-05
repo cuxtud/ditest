@@ -45,4 +45,4 @@ The execute target would be *local* and the command options would be using the d
 
 This would generate 2 ansible groups **ubuntu-st01** **ubuntu-st02**. All instances with label ubuntu would be assigned to ubuntu-st01 and instances with lable ubuntu-st02 will be assigned to ubuntu-st02. The playbook base.yml will be executed on all hosts for these 2 groups.
 
-<mark style="background-color: #FFFF00">**Important**</mark>: Instances would be fetched from the tenant of which the user api key belongs to.
+<span style="background-color: #FFFF00">**Important**</span>: Instances would be fetched from the tenant of which the user api key belongs to.
