@@ -22,9 +22,23 @@ Steps to achieve this use case.
         │   │   ├── morpheusinv.yml
         │   ├── SSR
         │   │   ├── morpheusinv.yml
-        │   ├── SSR
+        │   ├── ST
         └── └── └── morpheusinv.yml
 ```
 
 - Catalog Items
 ![Catalog Items](/src/catalogItems.png?raw=true "Catalog Items")
+
+The first one Onbaording has an operation workflow "orderCatalogUbuntu"
+
+![Catalog Ubuntu VM](/src/ocUbuntu.png?raw=true "Ubuntu VM")
+
+The first python task in the workflow is associated to the script "**ubuntu-ct.py**" This script would trigger an API to order catalog Item "*Ubuntu 20.04*". The ubuntu 20.04 catalog items is of type instance which would provision an Ubuntu VM in the cloud which the subtenant has access. 
+
+Once the instance is provisioned, the next ansible task in the workflow "*Base - local*" would execute. 
+
+![Ansible task for Subtenant-Test-01](/src/baseLocal.png?raw=true "Base Local")
+
+The execute target would be local and the command options would be using the dynamic inventory for ST01 in */var/opt/morpheus/morpheus-ui/dynamic_inv/ST01/morpheusinv.yml*
+
+![ST inventory file](/src/STinv.png?raw=true "Invenory file")
