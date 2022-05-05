@@ -31,9 +31,11 @@ Steps to achieve this use case.
 
 The first one Onbaording has an operation workflow "orderCatalogUbuntu"
 
-<div style="width:60px ; height:60px">
+<!-- <div style="width:60px ; height:60px">
 ![Catalog Ubuntu VM](/src/ocUbuntu.png?raw=true "Ubuntu VM")
-<div>
+</div> -->
+
+<img src="/src/ocUbuntu.png" alt="Catalog Ubuntu VM" width="50%"/>
 
 The first python task in the workflow is associated to the script "**ubuntu-ct.py**" This script would trigger an API to order catalog Item "*Ubuntu 20.04*". The ubuntu 20.04 catalog items is of type instance which would provision an Ubuntu VM in the cloud which the subtenant has access. 
 
