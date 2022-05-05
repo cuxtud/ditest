@@ -43,6 +43,22 @@ The execute target would be *local* and the command options would be using the d
 
 ![ST inventory file](/src/STinv.png?raw=true "Invenory file")
 
-This would generate 2 ansible groups **ubuntu-st01** **ubuntu-st02**. All instances with label ubuntu would be assigned to ubuntu-st01 and instances with lable ubuntu-st02 will be assigned to ubuntu-st02. The playbook base.yml will be executed on all hosts for these 2 groups.
+This would generate 2 ansible groups **ubuntu-st01** **ubuntu-st02**. All instances with label ubuntu would be assigned to ubuntu-st01 and instances with label ubuntu-st02 will be assigned to ubuntu-st02. The playbook base.yml will be executed on all hosts for these 2 groups.
 
-<span style="background-color: green">**Important**</span>: Instances would be fetched from the tenant of which the user api key belongs to.
+**Important**: Instances would be fetched from the tenant of which the user api key belongs to.
+
+Once completed and successful it will trigger the next task **executeUpdateDNS**
+
+<img src="/src/updateDNS.png" alt="Update DNS task" width="50%"/>
+
+This python task would do an api call to search a workflow with name *execute+update+dns*. The workflow will execute a python task **updateDNS.py**. this script would order a catalog item visible in private shared subtenant called Update DNS. The script will use cypher to fetch the accessToken a private shared subtenant user. The token should be available in the Subtenant-Test-01. The access of the cypher can be controlled via a cypher policy in the subtenant.
+
+<img src="/src/ocUpdateDNS.png" alt="Catalog Update DNS" width="50%"/>
+
+The workflow associated to this catalog item has an ansible task which would execute and create DNS records etc.
+
+<img src="/src/ssrUpdateDNS.png" alt="Catalog Ubuntu VM" width="50%"/>
+
+The ansible task will target the inventory file */var/opt/morpheus/morpheus-ui/dynamic_inv/SSR/morpheusinv.yml*
+
+The yaml file will generate an inventroy by searching all instance with label dns and executing the playbook against that instance.
