@@ -31,10 +31,6 @@ Steps to achieve this use case.
 
 The first one Onbaording has an operation workflow "orderCatalogUbuntu"
 
-<!-- <div style="width:60px ; height:60px">
-![Catalog Ubuntu VM](/src/ocUbuntu.png?raw=true "Ubuntu VM")
-</div> -->
-
 <img src="/src/ocUbuntu.png" alt="Catalog Ubuntu VM" width="50%"/>
 
 The first python task in the workflow is associated to the script "**ubuntu-ct.py**" This script would trigger an API to order catalog Item "*Ubuntu 20.04*". The ubuntu 20.04 catalog items is of type instance which would provision an Ubuntu VM in the cloud which the subtenant has access. 
@@ -43,6 +39,10 @@ Once the instance is provisioned, the next ansible task in the workflow "*Base -
 
 ![Ansible task for Subtenant-Test-01](/src/baseLocal.png?raw=true "Base Local")
 
-The execute target would be local and the command options would be using the dynamic inventory for ST01 in */var/opt/morpheus/morpheus-ui/dynamic_inv/ST01/morpheusinv.yml*
+The execute target would be *local* and the command options would be using the dynamic inventory for ST01 in */var/opt/morpheus/morpheus-ui/dynamic_inv/ST01/morpheusinv.yml*
 
 ![ST inventory file](/src/STinv.png?raw=true "Invenory file")
+
+This would generate 2 ansible groups **ubuntu-st01** **ubuntu-st02**. All instances with label ubuntu would be assigned to ubuntu-st01 and instances with lable ubuntu-st02 will be assigned to ubuntu-st02. The playbook base.yml will be executed on all hosts for these 2 groups.
+
+<mark style="background-color: #FFFF00">**Important**</mark>: <mark>Instances would be fetched from the tenant of which the user api key belongs to. </mark>
