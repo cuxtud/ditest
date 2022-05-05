@@ -16,6 +16,7 @@ Steps to achieve this use case.
 
 - Install dynamic inventory plugin on all app servers. Refer doc [here](https://github.com/gomorpheus/ansible-collection-morpheus-core#readme)
 - The morpheusinv.yml file can be multiple in different directories. Eg. below is the structure I used
+```
         ├── /var/opt/morpheus/morpheus-ui/dynamic_inv
         │   ├── MT
         │   │   ├── morpheusinv.yml
@@ -23,6 +24,7 @@ Steps to achieve this use case.
         │   │   ├── morpheusinv.yml
         │   ├── SSR
         └── └── └── morpheusinv.yml
+```
 
 - Catalog Items
 ![Catalog Items](/src/catalogItems.png?raw=true "Catalog Items")
